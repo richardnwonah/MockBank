@@ -1,0 +1,37 @@
+version: '3.4'
+
+
+networks:
+    demobanknetwork: 
+
+services: 
+  demoappdb:
+    container_name: app-db
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports:
+       - 8002:1433
+    environment:
+       - ACCEPT_EULA=Y
+       - SA_PASSWORD=
+    networks:
+       - demobanknetwork
+
+
+  cavbackendupdate:
+    container_name: demo-bank-app
+    image: ${DOCKER_REGISTRY-}cavbackendupdate
+    build:
+      context: .
+      dockerfile: CAVBackEndUpdate/Dockerfile
+    ports:
+      - 8001:80
+    depends_on:
+      - demoappdb
+    environment:
+      - DB_HOST=demoappdb
+      - DB_NAME=demoappdb
+      - DB_SA_PASSORD=demoappdb
+    networks:
+      - demobanknetwork
+
+    
