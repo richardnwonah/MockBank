@@ -14,10 +14,10 @@ builder.Services.AddEntityFrameworkSqlServer();
 var dbHost = Environment.GetEnvironmentVariable("DB_HOST");
 var dbName = Environment.GetEnvironmentVariable("DB_Name"); ;
 var dbPassword = Environment.GetEnvironmentVariable("DB_SA_PASSWORD");
-var connectionString = $"Data Source={dbHost};Initial Catalog={dbName};User ID=sa;Password={dbPassword};Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True;";
+var connectionString = $"Data Source={dbHost};Initial Catalog={dbName};User ID=sa;Password={dbPassword};TrustServerCertificate=True;MultipleActiveResultSets=true;integrated security=false;";
 builder.Services.AddDbContextPool<AppDbContext>(options =>
         options.UseSqlServer(connectionString));
-//$"Server={dbHost};Database={dbName};Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True;Encrypt=False User ID=sa;Password={dbPassword}"
+//$"Server={dbHost};Database={dbName};Trusted_Connection=True;TrustServerCertificate=True;Encrypt=False User ID=sa;Password={dbPassword}"
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

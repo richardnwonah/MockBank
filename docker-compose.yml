@@ -30,7 +30,7 @@ services:
     environment:
       - DB_HOST=demoappdb
       - DB_NAME=appdb
-      - DB_SA_PASSORD=password@12345
+      - DB_SA_PASSWORD=password@12345
     networks:
       - demobanknetwork
 
