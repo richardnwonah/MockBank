@@ -13,6 +13,7 @@ namespace CAVBackEndUpdate.Models
         public string City { get; set; }
         public string State { get; set; }
         public string Currency { get; set; }
+        public string SolId { get; set; }
         public double CumulativeInflow { get; set; }
         public DateTime CreatedAt { get; set; }
     }

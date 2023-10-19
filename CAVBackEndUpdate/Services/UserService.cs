@@ -33,6 +33,7 @@ namespace CAVBackEndUpdate.Services
             user.FirstName = personNameGenerator.GenerateRandomFirstName();
             user.LastName = personNameGenerator.GenerateRandomLastName();  
             user.AccountNumber = GenerateAccountNumber();
+            user.SolId = ReturnUserId();
             user.Address = RandomAddressGenerator();
             user.State = GetStates();
             user.City = GetCiteByState(user.State);  
@@ -42,6 +43,14 @@ namespace CAVBackEndUpdate.Services
             return user;
             
            
+        }
+
+        private string ReturnUserId()
+        {
+            string[] Branches = { "0295", "0296", "0461", "0110", "0565", "0561" };
+            Random random = new Random();
+            var branchNameId = random.Next(Branches.Length);
+            return Branches[branchNameId];
         }
 
         public int GenerateAccountBalance()
